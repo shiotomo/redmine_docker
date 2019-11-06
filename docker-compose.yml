@@ -4,7 +4,7 @@ services:
     redmine:
       image: redmine:4.0.5
       ports:
-        - 30001:3000
+        - 30002:3000
       environment:
         REDMINE_DB_MYSQL: db
         REDMINE_DB_PASSWORD: password
@@ -20,3 +20,5 @@ services:
       volumes:
         - ./mysql_conf.d:/etc/mysql/conf.d/
         - ./mysql_data:/var/lib/mysql
+        - ./my.cnf:/etc/mysql/conf.d/my.cnf
+      command: mysqld --character-set-server=utf8 --collation-server=utf8_unicode_ci
